@@ -22,7 +22,7 @@ public class TestCreatePressReleaseXmlFile
                                                                  "streetAddress1",
                                                                  "city1",
                                                                  "state1",
-                                                                 "zipCode1",
+                                                                 "12345",
                                                                  "country1")),
                                                 "phoneNumber1",
                                                 "emailAddress1"),

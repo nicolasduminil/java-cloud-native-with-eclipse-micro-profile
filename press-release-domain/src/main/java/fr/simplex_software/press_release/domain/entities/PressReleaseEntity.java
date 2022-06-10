@@ -29,8 +29,9 @@ public class PressReleaseEntity implements Serializable
   @Column(name = "RELEASE_DATE", nullable = false, length = 40)
   @XmlJavaTypeAdapter(LocalDateXmlAdapter.class)
   private LocalDate releaseDate;
-  @OneToOne(mappedBy = "pressReleaseEntity")
-  private ContactDetailsEntity contactDetailsEntity;
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name="CONTACT_DETAILS_ID")
+  private ContactDetailsEntity contact;
   @Column(name = "PATH_TO_LOGO", nullable = false, length = 120)
   private String pathToLogo;
   @Column(name = "PATH_TO_HEADER", nullable = false, length = 120)

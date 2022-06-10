@@ -28,7 +28,7 @@ public class ContactDetailsDto implements Serializable
   private String firstName;
   @NonNull
   @Valid
-  private OrganizationDto organizationDto;
+  private OrganizationDto organization;
   @NonNull
   @NotNull
   @NotEmpty

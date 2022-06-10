@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <pressRelease>
     <pressReleaseName>pressReleaseName1</pressReleaseName>
-    <releaseDate>2022-06-09</releaseDate>
+    <releaseDate>2022-06-10</releaseDate>
     <contact>
         <lastName>lastName1</lastName>
         <firstName>firstName1</firstName>
-        <organizationDto>
+        <organization>
             <oraganizationName>oraganizationName1</oraganizationName>
             <organizationRegistrationNumber>organizationRegistrationNumber1</organizationRegistrationNumber>
-            <organizationAddressDto>
+            <address>
                 <streetAddress>streetAddress1</streetAddress>
                 <city>city1</city>
                 <state>state1</state>
-                <zipCode>zipCode1</zipCode>
+                <zipCode>12345</zipCode>
                 <country>country1</country>
-            </organizationAddressDto>
-        </organizationDto>
+            </address>
+        </organization>
         <phoneNumber>phoneNumber1</phoneNumber>
         <emailAddress>emailAddress1</emailAddress>
     </contact>

@@ -14,10 +14,20 @@ public interface PressReleaseMapper
   public PressReleaseDto fromEntity(
     PressReleaseEntity pressReleaseEntity);
 
-  public PressReleaseEntity toEntity(
-    PressReleaseDto pressReleaseDto);
+  public PressReleaseEntity toEntity(PressReleaseDto pressReleaseDto);
 
-  public void updateEntityFromPOJO(PressReleaseDto pressReleaseDto,
-                                   @MappingTarget
-                                   PressReleaseEntity pressReleaseEntity);
+  public ContactDetailsDto fromEntity(
+    ContactDetailsEntity contactDetailsEntity);
+
+  public ContactDetailsEntity toEntity(
+    ContactDetailsDto contactDetailsDto);
+
+  public AddressDto fromEntity(AddressEntity addressEntity);
+
+  public AddressEntity toEntity(AddressDto addressDto);
+
+  public OrganizationDto fromEntity(
+    OrganizationEntity organizationEntity);
+
+  public OrganizationEntity toEntity(OrganizationDto organizationDto);
 }

@@ -28,5 +28,5 @@ public class OrganizationDto implements Serializable
   private String organizationRegistrationNumber;
   @NonNull
   @Valid
-  private AddressDto organizationAddressDto;
+  private AddressDto address;
 }

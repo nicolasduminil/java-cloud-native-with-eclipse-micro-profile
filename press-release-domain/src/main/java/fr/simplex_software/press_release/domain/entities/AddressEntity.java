@@ -28,6 +28,4 @@ public class AddressEntity implements Serializable
   private String zipCode;
   @Column(name = "COUNTRY", nullable = false, length = 20)
   private String country;
-  @OneToOne(mappedBy = "addressEntity")
-  private OrganizationEntity organizationEntity;
 }

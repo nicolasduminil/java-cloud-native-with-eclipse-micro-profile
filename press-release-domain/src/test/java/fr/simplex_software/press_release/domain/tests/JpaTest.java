@@ -21,9 +21,13 @@ public class JpaTest extends TestCommon
   @AfterAll
   public static void tearDown()
   {
-    em.clear();
-    em.close();
-    emf.close();
+    if (em != null)
+    {
+      em.clear();
+      em.close();
+    }
+    if (emf != null)
+      emf.close();
   }
 
   public static EntityManagerFactory getEmf()

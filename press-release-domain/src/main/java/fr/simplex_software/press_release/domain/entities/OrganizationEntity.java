@@ -22,10 +22,7 @@ public class OrganizationEntity implements Serializable
   private String oraganizationName;
   @Column(name = "REGISTRATION_NUMBER", nullable = false, length = 40)
   private String organizationRegistrationNumber;
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
-  private AddressEntity addressEntity;
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "CONTACT_DETAILS_ID", referencedColumnName = "CONTACT_DETAILS_ID")
-  private ContactDetailsEntity contactDetailsEntity;
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "ADDRESS_ID")
+  private AddressEntity address;
 }

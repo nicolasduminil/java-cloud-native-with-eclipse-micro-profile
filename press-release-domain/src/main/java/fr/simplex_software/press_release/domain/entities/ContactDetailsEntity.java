@@ -1,6 +1,5 @@
 package fr.simplex_software.press_release.domain.entities;
 
-import fr.simplex_software.press_release.domain.dtos.*;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,13 +22,11 @@ public class ContactDetailsEntity implements Serializable
   private String lastName;
   @Column(name = "FIRST_NAME", nullable = false, length = 40)
   private String firstName;
-  @OneToOne(mappedBy = "contactDetailsEntity")
-  private OrganizationEntity organizationDto;
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name="ORGANIZATION_ID")
+  private OrganizationEntity organization;
   @Column(name = "PHONE_NUMBER", nullable = false, length = 12)
   private String phoneNumber;
   @Column(name = "EMAIL_ADDRESS", nullable = false, length = 60)
   private String emailAddress;
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "PRESS_RELEASE_ID", referencedColumnName = "PRESS_RELEASE_ID")
-  private PressReleaseEntity pressReleaseEntity;
 }
