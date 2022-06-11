@@ -1,5 +1,6 @@
 package fr.simplex_software.press_release.domain.tests;
 
+import fr.simplex_software.press_release.domain.commons.*;
 import fr.simplex_software.press_release.domain.dtos.*;
 import org.junit.jupiter.api.*;
 
@@ -28,6 +29,6 @@ public class TestCreatePressReleaseXmlFile
                                                 "emailAddress1"),
                           "pathToLogo1", "pathToHeader1",
                           "pathToContent1", "pathToFinalNote");
-    new TestCommon().marshalPressReleaseDtoToXmlFile(pressReleaseDto);
+    new TestCommons().marshalPressReleaseDtoToXmlFile(pressReleaseDto);
   }
 }

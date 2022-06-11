@@ -1,12 +1,11 @@
-package fr.simplex_software.press_release.domain.tests;
+package fr.simplex_software.press_release.domain.commons;
 
-import fr.simplex_software.press_release.domain.*;
 import fr.simplex_software.press_release.domain.dtos.*;
 import jakarta.xml.bind.*;
 
 import java.io.*;
 
-public class TestCommon
+public class TestCommons
 {
   public void marshalPressReleaseDtoToXmlFile(
     PressReleaseDto pressReleaseDto)

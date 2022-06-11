@@ -1,5 +1,6 @@
 package fr.simplex_software.press_release.domain.tests;
 
+import fr.simplex_software.press_release.domain.commons.*;
 import fr.simplex_software.press_release.domain.dtos.*;
 import fr.simplex_software.press_release.domain.entities.*;
 import fr.simplex_software.press_release.domain.mappers.*;
@@ -9,7 +10,7 @@ import java.io.*;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class TestPressReleaseMapper extends TestCommon
+public class TestPressReleaseMapper extends TestCommons
 {
   @Test
   public void testPressReleaseMapper()

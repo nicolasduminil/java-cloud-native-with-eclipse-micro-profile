@@ -1,12 +1,13 @@
 package fr.simplex_software.press_release.domain.tests;
 
+import fr.simplex_software.press_release.domain.commons.*;
 import jakarta.persistence.*;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
 import java.sql.*;
 
-public class JpaTest extends TestCommon
+public class JpaTest extends TestCommons
 {
   private static EntityManagerFactory emf;
   private static EntityManager em;

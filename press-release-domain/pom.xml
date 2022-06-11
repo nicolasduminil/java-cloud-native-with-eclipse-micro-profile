@@ -9,6 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>press-release-domain</artifactId>
+  <name>Java cloud native with Eclipse MP :: The domain module</name>
   <dependencies>
     <dependency>
       <groupId>jakarta.platform</groupId>
@@ -42,4 +43,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+    <finalName>${project.artifactId}</finalName>
+  </build>
 </project>
