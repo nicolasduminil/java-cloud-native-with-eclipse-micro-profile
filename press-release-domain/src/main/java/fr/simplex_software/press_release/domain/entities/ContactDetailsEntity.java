@@ -29,4 +29,9 @@ public class ContactDetailsEntity implements Serializable
   private String phoneNumber;
   @Column(name = "EMAIL_ADDRESS", nullable = false, length = 60)
   private String emailAddress;
+  /*@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "PRESS_RELEASE_ID", referencedColumnName =
+  "PRESS_RELEASE_ID")
+  @MapsId
+  private PressReleaseEntity pressRelease;*/
 }
