@@ -9,7 +9,10 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/cdi/pom.xml" />
+        <option value="$PROJECT_DIR$/press-release-cdi/pom.xml" />
         <option value="$PROJECT_DIR$/press-release-commons/pom.xml" />
+        <option value="$PROJECT_DIR$/press-release-data/pom.xml" />
       </set>
     </option>
   </component>

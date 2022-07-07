@@ -1,0 +1,658 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Java cloud native with Eclipse MP :: The master POM                [pom]
+[INFO] Java cloud native with Eclipse MP :: The domain module             [jar]
+[INFO] Java cloud native with Eclipse MP :: The data module               [jar]
+[INFO] cdi                                                                [jar]
+[INFO] 
+[INFO] ------------< fr.simplex-software.press-release:master-pom >------------
+[INFO] Building Java cloud native with Eclipse MP :: The master POM 1.0-SNAPSHOT [1/4]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ master-pom ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ master-pom ---
+[INFO] Installing /home/nicolas/java-cloud-native-with-eclipse-micro-profile/pom.xml to /home/nicolas/.m2/repository/fr/simplex-software/press-release/master-pom/1.0-SNAPSHOT/master-pom-1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -------< fr.simplex-software.press-release:press-release-domain >-------
+[INFO] Building Java cloud native with Eclipse MP :: The domain module 1.0-SNAPSHOT [2/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ press-release-domain ---
+[INFO] Deleting /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-domain/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ press-release-domain ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ press-release-domain ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 12 source files to /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-domain/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ press-release-domain ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:testCompile (default-testCompile) @ press-release-domain ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-domain/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ press-release-domain ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running fr.simplex_software.press_release.domain.tests.TestCreatePressReleaseXmlFile
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.168 s - in fr.simplex_software.press_release.domain.tests.TestCreatePressReleaseXmlFile
+[INFO] Running fr.simplex_software.press_release.domain.tests.TestPressReleaseMapper
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s - in fr.simplex_software.press_release.domain.tests.TestPressReleaseMapper
+[INFO] Running fr.simplex_software.press_release.domain.tests.TestEntities
+Hibernate: 
+    
+    drop table if exists ADDRESSES CASCADE 
+Hibernate: 
+    
+    drop table if exists CONTACT_DETAILS CASCADE 
+Hibernate: 
+    
+    drop table if exists ORGANIZATIONS CASCADE 
+Hibernate: 
+    
+    drop table if exists PRESS_RELEASES CASCADE 
+Hibernate: 
+    
+    drop sequence if exists ADDRESS_SEQ
+Hibernate: 
+    
+    drop sequence if exists CONTACT_DETAILS_SEQ
+Hibernate: 
+    
+    drop sequence if exists ORGANIZATION_SEQ
+Hibernate: 
+    
+    drop sequence if exists PRESS_RELEASE_SEQ
+Hibernate: create sequence ADDRESS_SEQ start with 1 increment by 50
+Hibernate: create sequence CONTACT_DETAILS_SEQ start with 1 increment by 50
+Hibernate: create sequence ORGANIZATION_SEQ start with 1 increment by 50
+Hibernate: create sequence PRESS_RELEASE_SEQ start with 1 increment by 50
+Hibernate: 
+    
+    create table ADDRESSES (
+       ADDRESS_ID bigint not null,
+        CITY varchar(20) not null,
+        COUNTRY varchar(20) not null,
+        STATE varchar(20),
+        STREET_ADDRESS varchar(40) not null,
+        ZIP_CODE varchar(5) not null,
+        primary key (ADDRESS_ID)
+    )
+Hibernate: 
+    
+    create table CONTACT_DETAILS (
+       CONTACT_DETAILS_ID bigint not null,
+        EMAIL_ADDRESS varchar(60) not null,
+        FIRST_NAME varchar(40) not null,
+        LAST_NAME varchar(40) not null,
+        PHONE_NUMBER varchar(12) not null,
+        ORGANIZATION_ID bigint,
+        primary key (CONTACT_DETAILS_ID)
+    )
+Hibernate: 
+    
+    create table ORGANIZATIONS (
+       ORGANIZATION_ID bigint not null,
+        ORGANIZATION_NAME varchar(40) not null,
+        REGISTRATION_NUMBER varchar(40) not null,
+        ADDRESS_ID bigint,
+        primary key (ORGANIZATION_ID)
+    )
+Hibernate: 
+    
+    create table PRESS_RELEASES (
+       PRESS_RELEASE_ID bigint not null,
+        PATH_TO_CONTENT varchar(120) not null,
+        PATH_TO_FINAL_NOTE varchar(120) not null,
+        PATH_TO_HEADER varchar(120) not null,
+        PATH_TO_LOGO varchar(120) not null,
+        PRESS_RELEASE_NAME varchar(40) not null,
+        RELEASE_DATE date not null,
+        CONTACT_DETAILS_ID bigint,
+        primary key (PRESS_RELEASE_ID)
+    )
+Hibernate: 
+    
+    alter table CONTACT_DETAILS 
+       add constraint FK5ucb6xnsig83i5g46ak8thwbu 
+       foreign key (ORGANIZATION_ID) 
+       references ORGANIZATIONS
+Hibernate: 
+    
+    alter table ORGANIZATIONS 
+       add constraint FKbq10yynxyxc9vomsmr9ovve4d 
+       foreign key (ADDRESS_ID) 
+       references ADDRESSES
+Hibernate: 
+    
+    alter table PRESS_RELEASES 
+       add constraint FK5rsp5iprvh0yu36pn3fndyalk 
+       foreign key (CONTACT_DETAILS_ID) 
+       references CONTACT_DETAILS
+Hibernate: 
+    call next value for PRESS_RELEASE_SEQ
+Hibernate: 
+    call next value for PRESS_RELEASE_SEQ
+Hibernate: 
+    call next value for CONTACT_DETAILS_SEQ
+Hibernate: 
+    call next value for CONTACT_DETAILS_SEQ
+Hibernate: 
+    call next value for ORGANIZATION_SEQ
+Hibernate: 
+    call next value for ORGANIZATION_SEQ
+Hibernate: 
+    call next value for ADDRESS_SEQ
+Hibernate: 
+    call next value for ADDRESS_SEQ
+Hibernate: 
+    /* insert fr.simplex_software.press_release.domain.entities.AddressEntity
+        */ insert 
+        into
+            ADDRESSES
+            (CITY, COUNTRY, STATE, STREET_ADDRESS, ZIP_CODE, ADDRESS_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert fr.simplex_software.press_release.domain.entities.OrganizationEntity
+        */ insert 
+        into
+            ORGANIZATIONS
+            (ADDRESS_ID, ORGANIZATION_NAME, REGISTRATION_NUMBER, ORGANIZATION_ID) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* insert fr.simplex_software.press_release.domain.entities.ContactDetailsEntity
+        */ insert 
+        into
+            CONTACT_DETAILS
+            (EMAIL_ADDRESS, FIRST_NAME, LAST_NAME, ORGANIZATION_ID, PHONE_NUMBER, CONTACT_DETAILS_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert fr.simplex_software.press_release.domain.entities.PressReleaseEntity
+        */ insert 
+        into
+            PRESS_RELEASES
+            (CONTACT_DETAILS_ID, PATH_TO_CONTENT, PATH_TO_FINAL_NOTE, PATH_TO_HEADER, PATH_TO_LOGO, PRESS_RELEASE_NAME, RELEASE_DATE, PRESS_RELEASE_ID) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* 
+from
+    PressReleaseEntity */ select
+        pressrelea0_.PRESS_RELEASE_ID as press_re1_3_,
+        pressrelea0_.CONTACT_DETAILS_ID as contact_8_3_,
+        pressrelea0_.PATH_TO_CONTENT as path_to_2_3_,
+        pressrelea0_.PATH_TO_FINAL_NOTE as path_to_3_3_,
+        pressrelea0_.PATH_TO_HEADER as path_to_4_3_,
+        pressrelea0_.PATH_TO_LOGO as path_to_5_3_,
+        pressrelea0_.PRESS_RELEASE_NAME as press_re6_3_,
+        pressrelea0_.RELEASE_DATE as release_7_3_ 
+    from
+        PRESS_RELEASES pressrelea0_
+Hibernate: 
+    /* select
+        c 
+    from
+        PressReleaseEntity c 
+    where
+        pressReleaseId = :id */ select
+            pressrelea0_.PRESS_RELEASE_ID as press_re1_3_,
+            pressrelea0_.CONTACT_DETAILS_ID as contact_8_3_,
+            pressrelea0_.PATH_TO_CONTENT as path_to_2_3_,
+            pressrelea0_.PATH_TO_FINAL_NOTE as path_to_3_3_,
+            pressrelea0_.PATH_TO_HEADER as path_to_4_3_,
+            pressrelea0_.PATH_TO_LOGO as path_to_5_3_,
+            pressrelea0_.PRESS_RELEASE_NAME as press_re6_3_,
+            pressrelea0_.RELEASE_DATE as release_7_3_ 
+        from
+            PRESS_RELEASES pressrelea0_ 
+        where
+            pressrelea0_.PRESS_RELEASE_ID=?
+Hibernate: 
+    /* update
+        fr.simplex_software.press_release.domain.entities.PressReleaseEntity */ update
+            PRESS_RELEASES 
+        set
+            CONTACT_DETAILS_ID=?,
+            PATH_TO_CONTENT=?,
+            PATH_TO_FINAL_NOTE=?,
+            PATH_TO_HEADER=?,
+            PATH_TO_LOGO=?,
+            PRESS_RELEASE_NAME=?,
+            RELEASE_DATE=? 
+        where
+            PRESS_RELEASE_ID=?
+Hibernate: 
+    /* select
+        c 
+    from
+        PressReleaseEntity c 
+    where
+        pressReleaseId = :id */ select
+            pressrelea0_.PRESS_RELEASE_ID as press_re1_3_,
+            pressrelea0_.CONTACT_DETAILS_ID as contact_8_3_,
+            pressrelea0_.PATH_TO_CONTENT as path_to_2_3_,
+            pressrelea0_.PATH_TO_FINAL_NOTE as path_to_3_3_,
+            pressrelea0_.PATH_TO_HEADER as path_to_4_3_,
+            pressrelea0_.PATH_TO_LOGO as path_to_5_3_,
+            pressrelea0_.PRESS_RELEASE_NAME as press_re6_3_,
+            pressrelea0_.RELEASE_DATE as release_7_3_ 
+        from
+            PRESS_RELEASES pressrelea0_ 
+        where
+            pressrelea0_.PRESS_RELEASE_ID=?
+Hibernate: 
+    /* delete fr.simplex_software.press_release.domain.entities.PressReleaseEntity */ delete 
+        from
+            PRESS_RELEASES 
+        where
+            PRESS_RELEASE_ID=?
+Hibernate: 
+    /* delete fr.simplex_software.press_release.domain.entities.ContactDetailsEntity */ delete 
+        from
+            CONTACT_DETAILS 
+        where
+            CONTACT_DETAILS_ID=?
+Hibernate: 
+    /* delete fr.simplex_software.press_release.domain.entities.OrganizationEntity */ delete 
+        from
+            ORGANIZATIONS 
+        where
+            ORGANIZATION_ID=?
+Hibernate: 
+    /* delete fr.simplex_software.press_release.domain.entities.AddressEntity */ delete 
+        from
+            ADDRESSES 
+        where
+            ADDRESS_ID=?
+Hibernate: 
+    /* select
+        c 
+    from
+        PressReleaseEntity c 
+    where
+        pressReleaseId = :id */ select
+            pressrelea0_.PRESS_RELEASE_ID as press_re1_3_,
+            pressrelea0_.CONTACT_DETAILS_ID as contact_8_3_,
+            pressrelea0_.PATH_TO_CONTENT as path_to_2_3_,
+            pressrelea0_.PATH_TO_FINAL_NOTE as path_to_3_3_,
+            pressrelea0_.PATH_TO_HEADER as path_to_4_3_,
+            pressrelea0_.PATH_TO_LOGO as path_to_5_3_,
+            pressrelea0_.PRESS_RELEASE_NAME as press_re6_3_,
+            pressrelea0_.RELEASE_DATE as release_7_3_ 
+        from
+            PRESS_RELEASES pressrelea0_ 
+        where
+            pressrelea0_.PRESS_RELEASE_ID=?
+Hibernate: 
+    /* select
+        c 
+    from
+        PressReleaseEntity c 
+    where
+        pressReleaseId = :id */ select
+            pressrelea0_.PRESS_RELEASE_ID as press_re1_3_,
+            pressrelea0_.CONTACT_DETAILS_ID as contact_8_3_,
+            pressrelea0_.PATH_TO_CONTENT as path_to_2_3_,
+            pressrelea0_.PATH_TO_FINAL_NOTE as path_to_3_3_,
+            pressrelea0_.PATH_TO_HEADER as path_to_4_3_,
+            pressrelea0_.PATH_TO_LOGO as path_to_5_3_,
+            pressrelea0_.PRESS_RELEASE_NAME as press_re6_3_,
+            pressrelea0_.RELEASE_DATE as release_7_3_ 
+        from
+            PRESS_RELEASES pressrelea0_ 
+        where
+            pressrelea0_.PRESS_RELEASE_ID=?
+Hibernate: 
+    
+    drop table if exists ADDRESSES CASCADE 
+Hibernate: 
+    
+    drop table if exists CONTACT_DETAILS CASCADE 
+Hibernate: 
+    
+    drop table if exists ORGANIZATIONS CASCADE 
+Hibernate: 
+    
+    drop table if exists PRESS_RELEASES CASCADE 
+Hibernate: 
+    
+    drop sequence if exists ADDRESS_SEQ
+Hibernate: 
+    
+    drop sequence if exists CONTACT_DETAILS_SEQ
+Hibernate: 
+    
+    drop sequence if exists ORGANIZATION_SEQ
+Hibernate: 
+    
+    drop sequence if exists PRESS_RELEASE_SEQ
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.349 s - in fr.simplex_software.press_release.domain.tests.TestEntities
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ press-release-domain ---
+[INFO] Building jar: /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-domain/target/press-release-domain.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ press-release-domain ---
+[INFO] Installing /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-domain/target/press-release-domain.jar to /home/nicolas/.m2/repository/fr/simplex-software/press-release/press-release-domain/1.0-SNAPSHOT/press-release-domain-1.0-SNAPSHOT.jar
+[INFO] Installing /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-domain/pom.xml to /home/nicolas/.m2/repository/fr/simplex-software/press-release/press-release-domain/1.0-SNAPSHOT/press-release-domain-1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --------< fr.simplex-software.press-release:press-release-data >--------
+[INFO] Building Java cloud native with Eclipse MP :: The data module 1.0-SNAPSHOT [3/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ press-release-data ---
+[INFO] Deleting /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-data/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ press-release-data ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ press-release-data ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-data/target/classes
+[INFO] /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-data/src/main/java/fr/simplex_software/press_release/data/PressReleaseRepositoryProducer.java: /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-data/src/main/java/fr/simplex_software/press_release/data/PressReleaseRepositoryProducer.java uses unchecked or unsafe operations.
+[INFO] /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-data/src/main/java/fr/simplex_software/press_release/data/PressReleaseRepositoryProducer.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ press-release-data ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:testCompile (default-testCompile) @ press-release-data ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-data/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ press-release-data ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running fr.simplex_software.press_release.data.tests.TestPressReleaseRepository
+Hibernate: 
+    
+    drop table if exists ADDRESSES CASCADE 
+Hibernate: 
+    
+    drop table if exists CONTACT_DETAILS CASCADE 
+Hibernate: 
+    
+    drop table if exists ORGANIZATIONS CASCADE 
+Hibernate: 
+    
+    drop table if exists PRESS_RELEASES CASCADE 
+Hibernate: 
+    
+    drop sequence if exists ADDRESS_SEQ
+Hibernate: 
+    
+    drop sequence if exists CONTACT_DETAILS_SEQ
+Hibernate: 
+    
+    drop sequence if exists ORGANIZATION_SEQ
+Hibernate: 
+    
+    drop sequence if exists PRESS_RELEASE_SEQ
+Hibernate: create sequence ADDRESS_SEQ start with 1 increment by 50
+Hibernate: create sequence CONTACT_DETAILS_SEQ start with 1 increment by 50
+Hibernate: create sequence ORGANIZATION_SEQ start with 1 increment by 50
+Hibernate: create sequence PRESS_RELEASE_SEQ start with 1 increment by 50
+Hibernate: 
+    
+    create table ADDRESSES (
+       ADDRESS_ID bigint not null,
+        CITY varchar(20) not null,
+        COUNTRY varchar(20) not null,
+        STATE varchar(20),
+        STREET_ADDRESS varchar(40) not null,
+        ZIP_CODE varchar(5) not null,
+        primary key (ADDRESS_ID)
+    )
+Hibernate: 
+    
+    create table CONTACT_DETAILS (
+       CONTACT_DETAILS_ID bigint not null,
+        EMAIL_ADDRESS varchar(60) not null,
+        FIRST_NAME varchar(40) not null,
+        LAST_NAME varchar(40) not null,
+        PHONE_NUMBER varchar(12) not null,
+        ORGANIZATION_ID bigint,
+        primary key (CONTACT_DETAILS_ID)
+    )
+Hibernate: 
+    
+    create table ORGANIZATIONS (
+       ORGANIZATION_ID bigint not null,
+        ORGANIZATION_NAME varchar(40) not null,
+        REGISTRATION_NUMBER varchar(40) not null,
+        ADDRESS_ID bigint,
+        primary key (ORGANIZATION_ID)
+    )
+Hibernate: 
+    
+    create table PRESS_RELEASES (
+       PRESS_RELEASE_ID bigint not null,
+        PATH_TO_CONTENT varchar(120) not null,
+        PATH_TO_FINAL_NOTE varchar(120) not null,
+        PATH_TO_HEADER varchar(120) not null,
+        PATH_TO_LOGO varchar(120) not null,
+        PRESS_RELEASE_NAME varchar(40) not null,
+        RELEASE_DATE date not null,
+        CONTACT_DETAILS_ID bigint,
+        primary key (PRESS_RELEASE_ID)
+    )
+Hibernate: 
+    
+    alter table CONTACT_DETAILS 
+       add constraint FK5ucb6xnsig83i5g46ak8thwbu 
+       foreign key (ORGANIZATION_ID) 
+       references ORGANIZATIONS
+Hibernate: 
+    
+    alter table ORGANIZATIONS 
+       add constraint FKbq10yynxyxc9vomsmr9ovve4d 
+       foreign key (ADDRESS_ID) 
+       references ADDRESSES
+Hibernate: 
+    
+    alter table PRESS_RELEASES 
+       add constraint FK5rsp5iprvh0yu36pn3fndyalk 
+       foreign key (CONTACT_DETAILS_ID) 
+       references CONTACT_DETAILS
+################### Should not be null ##############
+Hibernate: 
+    
+    drop table if exists ADDRESSES CASCADE 
+Hibernate: 
+    
+    drop table if exists CONTACT_DETAILS CASCADE 
+Hibernate: 
+    
+    drop table if exists ORGANIZATIONS CASCADE 
+Hibernate: 
+    
+    drop table if exists PRESS_RELEASES CASCADE 
+Hibernate: 
+    
+    drop sequence if exists ADDRESS_SEQ
+Hibernate: 
+    
+    drop sequence if exists CONTACT_DETAILS_SEQ
+Hibernate: 
+    
+    drop sequence if exists ORGANIZATION_SEQ
+Hibernate: 
+    
+    drop sequence if exists PRESS_RELEASE_SEQ
+Hibernate: create sequence ADDRESS_SEQ start with 1 increment by 50
+Hibernate: create sequence CONTACT_DETAILS_SEQ start with 1 increment by 50
+Hibernate: create sequence ORGANIZATION_SEQ start with 1 increment by 50
+Hibernate: create sequence PRESS_RELEASE_SEQ start with 1 increment by 50
+Hibernate: 
+    
+    create table ADDRESSES (
+       ADDRESS_ID bigint not null,
+        CITY varchar(20) not null,
+        COUNTRY varchar(20) not null,
+        STATE varchar(20),
+        STREET_ADDRESS varchar(40) not null,
+        ZIP_CODE varchar(5) not null,
+        primary key (ADDRESS_ID)
+    )
+Hibernate: 
+    
+    create table CONTACT_DETAILS (
+       CONTACT_DETAILS_ID bigint not null,
+        EMAIL_ADDRESS varchar(60) not null,
+        FIRST_NAME varchar(40) not null,
+        LAST_NAME varchar(40) not null,
+        PHONE_NUMBER varchar(12) not null,
+        ORGANIZATION_ID bigint,
+        primary key (CONTACT_DETAILS_ID)
+    )
+Hibernate: 
+    
+    create table ORGANIZATIONS (
+       ORGANIZATION_ID bigint not null,
+        ORGANIZATION_NAME varchar(40) not null,
+        REGISTRATION_NUMBER varchar(40) not null,
+        ADDRESS_ID bigint,
+        primary key (ORGANIZATION_ID)
+    )
+Hibernate: 
+    
+    create table PRESS_RELEASES (
+       PRESS_RELEASE_ID bigint not null,
+        PATH_TO_CONTENT varchar(120) not null,
+        PATH_TO_FINAL_NOTE varchar(120) not null,
+        PATH_TO_HEADER varchar(120) not null,
+        PATH_TO_LOGO varchar(120) not null,
+        PRESS_RELEASE_NAME varchar(40) not null,
+        RELEASE_DATE date not null,
+        CONTACT_DETAILS_ID bigint,
+        primary key (PRESS_RELEASE_ID)
+    )
+Hibernate: 
+    
+    alter table CONTACT_DETAILS 
+       add constraint FK5ucb6xnsig83i5g46ak8thwbu 
+       foreign key (ORGANIZATION_ID) 
+       references ORGANIZATIONS
+Hibernate: 
+    
+    alter table ORGANIZATIONS 
+       add constraint FKbq10yynxyxc9vomsmr9ovve4d 
+       foreign key (ADDRESS_ID) 
+       references ADDRESSES
+Hibernate: 
+    
+    alter table PRESS_RELEASES 
+       add constraint FK5rsp5iprvh0yu36pn3fndyalk 
+       foreign key (CONTACT_DETAILS_ID) 
+       references CONTACT_DETAILS
+################### Save ##############
+Hibernate: 
+    call next value for PRESS_RELEASE_SEQ
+Hibernate: 
+    call next value for PRESS_RELEASE_SEQ
+Hibernate: 
+    call next value for CONTACT_DETAILS_SEQ
+Hibernate: 
+    call next value for CONTACT_DETAILS_SEQ
+Hibernate: 
+    call next value for ORGANIZATION_SEQ
+Hibernate: 
+    call next value for ORGANIZATION_SEQ
+Hibernate: 
+    call next value for ADDRESS_SEQ
+Hibernate: 
+    call next value for ADDRESS_SEQ
+Hibernate: 
+    /* insert fr.simplex_software.press_release.domain.entities.AddressEntity
+        */ insert 
+        into
+            ADDRESSES
+            (CITY, COUNTRY, STATE, STREET_ADDRESS, ZIP_CODE, ADDRESS_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert fr.simplex_software.press_release.domain.entities.OrganizationEntity
+        */ insert 
+        into
+            ORGANIZATIONS
+            (ADDRESS_ID, ORGANIZATION_NAME, REGISTRATION_NUMBER, ORGANIZATION_ID) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* insert fr.simplex_software.press_release.domain.entities.ContactDetailsEntity
+        */ insert 
+        into
+            CONTACT_DETAILS
+            (EMAIL_ADDRESS, FIRST_NAME, LAST_NAME, ORGANIZATION_ID, PHONE_NUMBER, CONTACT_DETAILS_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert fr.simplex_software.press_release.domain.entities.PressReleaseEntity
+        */ insert 
+        into
+            PRESS_RELEASES
+            (CONTACT_DETAILS_ID, PATH_TO_CONTENT, PATH_TO_FINAL_NOTE, PATH_TO_HEADER, PATH_TO_LOGO, PRESS_RELEASE_NAME, RELEASE_DATE, PRESS_RELEASE_ID) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?)
+################### Find all ##############
+[ERROR] Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.655 s <<< FAILURE! - in fr.simplex_software.press_release.data.tests.TestPressReleaseRepository
+[ERROR] testSaveShouldSucceed  Time elapsed: 0.295 s  <<< ERROR!
+java.lang.NullPointerException
+	at fr.simplex_software.press_release.data.tests.TestPressReleaseRepository.testSaveShouldSucceed(TestPressReleaseRepository.java:70)
+
+Weld SE container f99576ca-a10d-4aa3-bd5b-fa037fbe6082 shut down by shutdown hook
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   TestPressReleaseRepository.testSaveShouldSucceed:70 » NullPointer
+[INFO] 
+[ERROR] Tests run: 2, Failures: 0, Errors: 1, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Java cloud native with Eclipse MP :: The master POM 1.0-SNAPSHOT:
+[INFO] 
+[INFO] Java cloud native with Eclipse MP :: The master POM  SUCCESS [  0.215 s]
+[INFO] Java cloud native with Eclipse MP :: The domain module SUCCESS [ 14.649 s]
+[INFO] Java cloud native with Eclipse MP :: The data module FAILURE [  4.731 s]
+[INFO] cdi ................................................ SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.733 s
+[INFO] Finished at: 2022-06-29T14:31:50+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project press-release-data: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/nicolas/java-cloud-native-with-eclipse-micro-profile/press-release-data/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :press-release-data

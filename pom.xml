@@ -10,12 +10,13 @@
   <name>Java cloud native with Eclipse MP :: The master POM</name>
   <modules>
     <module>press-release-domain</module>
-    <module>press-release-data</module>
+    <module>press-release-service</module>
   </modules>
   <properties>
-    <project.java.version>1.8</project.java.version>
+    <project.java.version>11</project.java.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+    <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
@@ -60,12 +61,12 @@
       <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core-jakarta</artifactId>
-        <version>5.5.7.Final</version>
+        <version>5.6.8.Final</version>
       </dependency>
       <dependency>
         <groupId>org.eclipse</groupId>
         <artifactId>yasson</artifactId>
-        <version>2.0.4</version>
+        <version>3.0.0</version>
       </dependency>
       <dependency>
         <groupId>com.oracle.database.jdbc</groupId>
@@ -76,19 +77,43 @@
       <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
-        <version>1.4.200</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>de.hilling.junit.cdi</groupId>
-        <artifactId>cdi-test-core</artifactId>
-        <version>3.4.0</version>
+        <version>2.1.214</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>fr.simplex-software.press-release</groupId>
         <artifactId>press-release-domain</artifactId>
         <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.database-rider</groupId>
+        <artifactId>rider-junit5</artifactId>
+        <version>1.32.0</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.github.database-rider</groupId>
+        <artifactId>rider-cdi</artifactId>
+        <version>1.32.0</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>de.hilling.junit.cdi</groupId>
+        <artifactId>cdi-test-core</artifactId>
+        <version>4.0.0-RC6</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>de.hilling.junit.cdi</groupId>
+        <artifactId>cdi-test-jee</artifactId>
+        <version>4.0.0-RC6</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>de.hilling.junit.cdi</groupId>
+        <artifactId>cdi-test-microprofile</artifactId>
+        <version>4.0.0-RC6</version>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -99,8 +124,29 @@
       <version>1.18.22</version>
     </dependency>
     <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.36</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-reload4j</artifactId>
+      <version>1.7.36</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -129,10 +175,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.10.1</version>
         <configuration>
-          <source>11</source>
-          <target>11</target>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
           <annotationProcessorPaths>
             <path>
               <groupId>org.projectlombok</groupId>

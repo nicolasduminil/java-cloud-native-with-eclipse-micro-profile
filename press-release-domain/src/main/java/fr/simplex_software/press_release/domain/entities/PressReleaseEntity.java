@@ -10,6 +10,9 @@ import java.time.*;
 
 @Entity
 @Table(name="PRESS_RELEASES")
+@NamedQuery(name = "all", query = "SELECT pr FROM PressReleaseEntity pr")
+@NamedQuery(name = "byName", query = "SELECT pr FROM PressReleaseEntity pr where pr.pressReleaseName = :name")
+@NamedQuery(name = "byDate", query = "SELECT pr FROM PressReleaseEntity pr where pr.releaseDate = :date")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
