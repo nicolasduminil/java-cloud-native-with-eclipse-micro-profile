@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="pressReleases" type="PressReleasesType"/>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="streetAddress" type="xs:string"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="state" type="xs:string"/>
+      <xs:element name="zipCode" type="xs:string"/>
+      <xs:element name="country" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrganizationType">
+    <xs:sequence>
+      <xs:element name="oraganizationName" type="xs:string"/>
+      <xs:element name="organizationRegistrationNumber" type="xs:string"/>
+      <xs:element name="address" type="AddressType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactDetailsType">
+    <xs:sequence>
+      <xs:element name="lastName" type="xs:string"/>
+      <xs:element name="firstName" type="xs:string"/>
+      <xs:element name="organization" type="OrganizationType"/>
+      <xs:element name="phoneNumber" type="xs:string"/>
+      <xs:element name="emailAddress" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PressReleaseType">
+    <xs:sequence>
+      <xs:element name="pressReleaseName" type="xs:string"/>
+      <xs:element name="releaseDate" type="xs:date"/>
+      <xs:element name="contact" type="ContactDetailsType"/>
+      <xs:element name="pathToLogo" type="xs:string"/>
+      <xs:element name="pathToHeader" type="xs:string"/>
+      <xs:element name="pathToContent" type="xs:string"/>
+      <xs:element name="pathToFinalNote" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PressReleasesType">
+    <xs:sequence>
+      <xs:element name="pressRelease" type="PressReleaseType"
+                  maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

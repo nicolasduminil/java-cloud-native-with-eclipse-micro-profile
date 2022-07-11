@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pressReleases>
+  <pressRelease>
+    <pressReleaseName>Nestlé announces the global launch of a new range of Starbucks products to
+      enjoy at home</pressReleaseName>
+    <releaseDate>2019-02-13</releaseDate>
+    <contact>
+      <lastName>Bourgeau</lastName>
+      <firstName>Heloise</firstName>
+      <organization>
+        <oraganizationName>Good food, Good life</oraganizationName>
+        <organizationRegistrationNumber>0540179886</organizationRegistrationNumber>
+        <address>
+          <streetAddress>29, rue de Lille</streetAddress>
+          <city>Aubagne</city>
+          <state>Bouches du Rhône</state>
+          <zipCode>13400</zipCode>
+          <country>France</country>
+        </address>
+      </organization>
+      <phoneNumber>+33(0)484210375</phoneNumber>
+      <emailAddress>HeloiseBourgeau@teleworm.us</emailAddress>
+    </contact>
+    <pathToLogo>/opt/data/logos</pathToLogo>
+    <pathToHeader>/opt/data/headers</pathToHeader>
+    <pathToContent>/opt/data/contents</pathToContent>
+    <pathToFinalNote>/opt/data/notes</pathToFinalNote>
+  </pressRelease>
+  <pressRelease>
+    <pressReleaseName>Ingenico launches IBM Watson-enabled chatbot to enhance customer experience</pressReleaseName>
+    <releaseDate>2019-01-14</releaseDate>
+    <contact>
+      <lastName>Bonneville</lastName>
+      <firstName>Clothilde</firstName>
+      <organization>
+        <oraganizationName>Soft Warehouse</oraganizationName>
+        <organizationRegistrationNumber>1651280997
+        </organizationRegistrationNumber>
+        <address>
+          <streetAddress>84, rue Reine Elisabeth</streetAddress>
+          <city>Mende</city>
+          <state>Bouches du Rhône</state>
+          <zipCode>48000</zipCode>
+          <country>France</country>
+        </address>
+      </organization>
+      <phoneNumber>+33(0)464622871</phoneNumber>
+      <emailAddress>ClothildeBonneville@jourrapide.com</emailAddress>
+    </contact>
+    <pathToLogo>/opt/data/logos</pathToLogo>
+    <pathToHeader>/opt/data/headers</pathToHeader>
+    <pathToContent>/opt/data/contents</pathToContent>
+    <pathToFinalNote>/opt/data/notes</pathToFinalNote>
+  </pressRelease>
+</pressReleases>
+

@@ -11,6 +11,7 @@
   <modules>
     <module>press-release-domain</module>
     <module>press-release-service</module>
+    <module>press-release-jaxb</module>
   </modules>
   <properties>
     <project.java.version>11</project.java.version>
@@ -86,6 +87,11 @@
         <version>1.0-SNAPSHOT</version>
       </dependency>
       <dependency>
+        <groupId>fr.simplex-software.press-release</groupId>
+        <artifactId>press-release-jaxb</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
         <groupId>com.github.database-rider</groupId>
         <artifactId>rider-junit5</artifactId>
         <version>1.32.0</version>
@@ -121,7 +127,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.22</version>
+      <version>1.18.24</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -152,7 +158,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.17.2</version>
+      <version>3.23.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -225,8 +231,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
-      </plugin>
+     </plugin>
     </plugins>
   </reporting>
 </project>

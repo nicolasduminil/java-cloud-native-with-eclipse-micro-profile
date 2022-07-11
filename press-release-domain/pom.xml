@@ -38,6 +38,10 @@
       <artifactId>h2</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>fr.simplex-software.press-release</groupId>
+      <artifactId>press-release-jaxb</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>
